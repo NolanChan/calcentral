@@ -69,6 +69,7 @@ ist_jms:
 hot_plate:
   enabled: false
 
+
 features:
   live_campus_links_data: true
   academic_status: true
