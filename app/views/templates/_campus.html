@@ -2,17 +2,47 @@
 
   <div class="cc-page-campus" data-ng-cloak data-cc-spinner-directive>
 
-    <div class="medium-9 medium-push-3 columns cc-page-campus-content">
+    <div class="medium-9 medium-push-3 columns cc-page-campus-content" data-ng-controller="FoodandHousingController">
 
       <h1 data-ng-bind="currentTopCategory"></h1>
 
+      <div class="medium-3 columns medium-push-7 cc-page-dashboard-column-c">
+          <h2>Dining Halls</h2>
+          <select ng-model="menuSort">
+            <option value="id">Tastiest</option>
+            <option value="distance">Farthest</option>
+          </select>
+          <!-- <li data-ng-repeat="menu in menues"> -->
+          {{diningHalls}}
+          <ul>
+            <li ng-repeat="diningHall in diningHalls | orderBy:menuSort">
+              {{diningHall.name}}
+            </li>
+          </ul>
+      </div>
+
       <div class="cc-widget" data-ng-show="currentTopCategory">
         <div class="cc-widget-title">
+          <h3>{{currentTopCategory}}
+          </h3>
+
           <h2>Links</h2>
         </div>
+
+        <div class="cc-widget">
+          <h2>Cal 1 Card</h2>
+
+          <button ng-click="addToBalance()">
+            Add More Meal Points
+          </button>
+          <h3 class="cc-widget-title"> 
+            <p style = "color:green;">{{balance | currency}} </p>
+          </h3>
+          
+        </div>
+
         <div class="cc-list-link-container" data-ng-repeat="subcategory in subcategories">
           <h3>{{subcategory}}</h3>
-
           <ul class="cc-list-links">
             <li data-ng-repeat="link in links | orderBy:'name' | linksubcategory:subcategory">
               <a data-ng-href="{{link.url}}"

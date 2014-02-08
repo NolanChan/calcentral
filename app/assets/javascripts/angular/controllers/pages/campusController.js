@@ -11,6 +11,7 @@
      * Add to the subcategories list if it doesn't exist yet
      * @param {String} subcategory The subcategory you want to add
      */
+
     var addToSubcategories = function(subcategory) {
       if ($scope.subcategories.indexOf(subcategory) === -1) {
         $scope.subcategories.push(subcategory);
@@ -101,6 +102,9 @@
       }
     };
 
+    var isFoodandHousing = function(y) {
+      angular.equality("Food & Housing",y);
+    }
     /**
      * Get the links
      */
