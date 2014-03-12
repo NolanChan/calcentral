@@ -105,6 +105,7 @@ class UserApi < MyMergedModel
       :preferred_name => self.preferred_name,
       :roles => @campus_attributes[:roles],
       :student_info => {
+        :profile_picture => Rails.application.routes.url_helpers.my_photo_path() + ".jpg",
         :california_residency => @campus_attributes[:california_residency],
         :reg_status => @campus_attributes[:reg_status],
         :reg_block => get_reg_blocks,
