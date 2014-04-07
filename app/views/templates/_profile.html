@@ -1,0 +1,24 @@
+<script type="text/ng-template" id="templates/profile.html">
+  <div class="medium-12 columns cc-settings">
+    <h3>
+      <br>
+      <a href="dashboard">My Dashboard</a> >> Profile 
+    </h3>
+    <div class="medium-3">
+      <div class="cc-widget">
+        <div class="cc-widget-title">
+          <h2>Profile Picture</h2>
+        </div>
+        <div class="cc-widget-padding">
+          <img alt="{{api.user.profile.full_name}}'s Profile Picture" data-ng-src="{{api.user.profile.student_info.profile_picture}}">
+        </div>
+        <p>
+          <b>Name :</b> {{api.user.profile.full_name}}<br>
+          <b>Preferred Name:</b> {{api.user.profile.preferred_name}}<br>
+          <b>Email:</b> {{api.user.profile.google_email}}<br>
+          <b>Email:</b> {{api.user.profile.canvas_email}}
+        </p>
+      </div>
+    </div>
+  </div>
+</script>
