@@ -1,5 +1,6 @@
 module CampusOracle
   class Queries < Connection
+    extend Cache::Cacheable
     include ActiveRecordHelper
 
     def self.reg_status_translator
@@ -370,6 +371,12 @@ module CampusOracle
     end
 
     def self.get_photo(ldap_uid)
+      smart_fetch_from_cache({id: ldap_uid, user_message_on_exception: "Photo server unreachable"}) do
+        request_photo(ldap_uid)
+      end
+    end   
+
+    def self.request_photo(ldap_uid)
       result = {}
       use_pooled_connection {
         sql = <<-SQL
